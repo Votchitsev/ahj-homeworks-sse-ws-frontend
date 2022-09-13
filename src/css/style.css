@@ -1,0 +1,47 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+.auth {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50vh;
+  left: 50%;
+  width: 400px;
+  transform: translate(-50%, -75%);
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.auth > input {
+  margin: 10px;
+  height: 30px;
+}
+
+.auth-title {
+  align-self: center;
+  margin: 10px;
+}
+
+.auth >input[type="submit"] {
+  width: 80%;
+  align-self: center;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.auth >input[type="text"] {
+  border-top: 0;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.hidden {
+  display: none;
+}
