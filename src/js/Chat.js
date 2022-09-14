@@ -3,12 +3,11 @@ class Chat {
     this.authForm = document.querySelector('.auth');
     this.usersContainer = document.querySelector('.online-user-list');
     this.ws = ws;
+    this.userName = undefined;
 
     this.getMessage = this.getMessage.bind(this);
     this.sendUserName = this.sendUserName.bind(this);
     this.openChat = this.openChat.bind(this);
-
-    this.ws.addEventListener('message', this.getMessage);
   }
 
   init() {
@@ -26,6 +25,8 @@ class Chat {
 
   addListeners() {
     this.authForm.addEventListener('submit', this.sendUserName);
+    window.addEventListener('beforeunload', this.close);
+    this.ws.addEventListener('message', this.getMessage);
   }
 
   sendUserName(e) {
@@ -33,12 +34,15 @@ class Chat {
 
     const input = e.target.querySelector('input[type="text"]');
 
+    this.userName = input.value;
+
     const data = {
       event: 'addUser',
       userName: input.value,
     };
 
-    this.ws.send(JSON.stringify(data));
+    this.webSocketSend(data);
+
     input.value = '';
   }
 
@@ -47,9 +51,9 @@ class Chat {
 
     if (json.event === 'addUser') {
       if (json.result) {
-        this.userName = json.userName;
         this.openChat();
       } else {
+        this.userName = undefined;
         alert('The user exists. Please choose another nickname');
       }
     }
@@ -58,7 +62,6 @@ class Chat {
     }
   }
 
-  // eslint-disable-next-line class-methods-use-this
   openChat() {
     this.hideAuthForm();
 
@@ -72,10 +75,13 @@ class Chat {
   }
 
   redrawUserList(userList) {
+    this.usersContainer.innerHTML = '';
+
     userList.forEach((user) => {
       const div = document.createElement('div');
       div.classList.add('online-user-list-item');
-      div.textContent = user;
+
+      div.textContent = (user === this.userName) ? 'You' : user;
       this.usersContainer.append(div);
     });
   }
