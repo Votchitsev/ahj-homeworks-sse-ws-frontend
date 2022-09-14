@@ -13,6 +13,7 @@ body {
   transform: translate(-50%, -75%);
   border: 1px solid black;
   border-radius: 10px;
+  background-color: rgb(187, 155, 155);
   padding: 20px;
 }
 
@@ -44,4 +45,26 @@ body {
 
 .hidden {
   display: none;
+}
+
+.chat {
+  display: flex;
+  width: 720px;
+  height: 80vh;
+  margin: 0 auto;
+  background-color: rgb(241, 231, 231);
+}
+
+.online-user-list {
+  border: 1px solid grey;
+  width: 30%;
+}
+
+.messages {
+  border: 1px solid grey;
+  width: 70%;
+}
+
+.online-user-list-item {
+  padding: 15px 5px 15px 15px
 }

@@ -1,6 +1,7 @@
 class Chat {
   constructor(ws) {
     this.authForm = document.querySelector('.auth');
+    this.usersContainer = document.querySelector('.online-user-list');
     this.ws = ws;
 
     this.getMessage = this.getMessage.bind(this);
@@ -17,6 +18,10 @@ class Chat {
 
   showAuthForm() {
     this.authForm.classList.remove('hidden');
+  }
+
+  hideAuthForm() {
+    this.authForm.classList.add('hidden');
   }
 
   addListeners() {
@@ -48,11 +53,31 @@ class Chat {
         alert('The user exists. Please choose another nickname');
       }
     }
+    if (json.event === 'getUserList') {
+      this.redrawUserList(json.userList);
+    }
   }
 
   // eslint-disable-next-line class-methods-use-this
   openChat() {
-    console.log('Open chat');
+    this.hideAuthForm();
+
+    this.webSocketSend({
+      event: 'getUserList',
+    });
+  }
+
+  webSocketSend(data) {
+    this.ws.send(JSON.stringify(data));
+  }
+
+  redrawUserList(userList) {
+    userList.forEach((user) => {
+      const div = document.createElement('div');
+      div.classList.add('online-user-list-item');
+      div.textContent = user;
+      this.usersContainer.append(div);
+    });
   }
 }
 
