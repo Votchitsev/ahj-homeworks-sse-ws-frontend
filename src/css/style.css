@@ -61,24 +61,21 @@ body {
 }
 
 .messages {
-  border: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   width: 70%;
+  border: 1px solid grey;
 }
 
 .online-user-list-item {
   padding: 15px 5px 15px 15px
 }
 
-.messages {
-  display: flex;
-  flex-direction: column;
-}
-
 .messages-container {
   display: flex;
   flex-direction: column;
-  min-height: 90%;
-  height: fit-content;
+  height: 700px;
   overflow-y: scroll;
 }
 
@@ -92,4 +89,30 @@ body {
   height: 35px;
   padding: 10px;
   border-radius: 35px;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+  width: fit-content;
+  height: fit-content;
+  padding: 14px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 15px;
+  overflow-wrap: break-word;
+}
+
+.message-user-time {
+  font-size: 10px;
+  padding-bottom: 10px;
+}
+
+.message-content {
+  font-size: 14px;
+}
+
+.message-right {
+  align-self: flex-end;
 }
