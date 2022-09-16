@@ -75,7 +75,7 @@ body {
 .messages-container {
   display: flex;
   flex-direction: column;
-  height: 700px;
+  height: 90%;
   overflow-y: scroll;
 }
 

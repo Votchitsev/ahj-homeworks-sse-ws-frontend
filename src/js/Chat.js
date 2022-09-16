@@ -108,6 +108,8 @@ class Chat {
     };
 
     this.webSocketSend(data);
+
+    this.messageForm.querySelector('input').value = '';
   }
 
   drawMessage(data) {
@@ -125,6 +127,8 @@ class Chat {
     </div>`;
 
     this.messagesContainer.insertAdjacentHTML('beforeend', messageEl);
+
+    this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
   }
 }
 
