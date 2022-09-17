@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack serve",
     "lint": "eslint .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
