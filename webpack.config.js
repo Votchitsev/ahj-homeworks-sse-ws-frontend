@@ -15,15 +15,13 @@ module.exports = {
     port: 3000,
     open: true,
   },
-  loader: {
-    module: {
-      rules: [
-        {
-          test: /\.css$/,
-          use: ['style-loader', 'css-loader'],
-        },
-      ],
-    },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({ template: './src/index.html' }),
