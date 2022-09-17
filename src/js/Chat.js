@@ -126,7 +126,7 @@ class Chat {
       <div class="message-content">${data.message}</div>
     </div>`;
 
-    this.messagesContainer.insertAdjacentHTML('beforeend', messageEl);
+    this.messagesContainer.insertAdjacentHTML('afterbegin', messageEl);
 
     this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
   }
